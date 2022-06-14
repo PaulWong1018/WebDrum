@@ -21,11 +21,18 @@ of the button pressed.
 */
 
     makeDrumSound(buttonInnerHTML);
+
+    buttonAnimation(buttonInnerHTML);
   });
 }
 
+
+
 document.addEventListener("keydown", (event) => {
+
   makeDrumSound(event.key);
+  buttonAnimation(event.key);
+
 });
 
 function makeDrumSound(key) {
@@ -69,4 +76,16 @@ function makeDrumSound(key) {
       console.log(event);
       break;
   }
+}
+
+
+function buttonAnimation(currentKey) {
+  
+  var activeButton = document.querySelector("." + currentKey);
+  activeButton.classList.add("pressed");
+
+  setTimeout(() => {
+    activeButton.classList.remove("pressed");
+  }, 100);
+
 }
